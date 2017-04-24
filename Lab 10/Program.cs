@@ -19,10 +19,31 @@ namespace Lab_10
             Console.WriteLine("Welcome to the Movie List Application!\n");
             Console.WriteLine("There are 100 moview in this list.");
 
-            Console.Write("What category are you interested in? (Animated, Drama, Horror, Scifi): ");
-            ValidateConsoleInput.GetValidString(Options);
+            Console.Write("What category are you interested in? (Animated, Drama, Horror, or Scifi): ");
+            string Category = ValidateConsoleInput.GetValidString(Options);
 
+            List<Movie> MovieList = new List<Movie>();
 
+            MovieList.Add(new Movie("The Matrix", "scifi"));
+            MovieList.Add(new Movie("Intersteller", "scifi"));
+            MovieList.Add(new Movie("Star Wars", "scifi"));
+            MovieList.Add(new Movie("Toy Story", "animated"));
+            MovieList.Add(new Movie("Finding Nemo", "animated"));
+            MovieList.Add(new Movie("The Lion King", "animated"));
+            MovieList.Add(new Movie("Titanic", "drama"));
+            MovieList.Add(new Movie("The Godfather", "drama"));
+            MovieList.Add(new Movie("Fight Club:", "drama"));
+            MovieList.Add(new Movie("The Shining", "horror"));
+            MovieList.Add(new Movie("The Exorcist", "horror"));
+            MovieList.Add(new Movie("The Conjuring", "horror"));
+
+            foreach (Movie item in MovieList)
+            {
+                if (item.MovieCategory == Category)
+                {
+                    Console.WriteLine(item.MovieTitle);
+                }
+            }
         }
     }
 }
