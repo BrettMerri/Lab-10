@@ -32,20 +32,26 @@ namespace Lab_10
             MovieList.Add(new Movie("The Exorcist", "horror"));
             MovieList.Add(new Movie("The Conjuring", "horror"));
 
-            string[] Options = { "animated", "drama", "horror", "scifi" }; //Declare movie categories in an Options array
+            string[] Options = { "Animated", "Drama", "Horror", "SciFi" }; //Declare movie categories in an Options array
             bool loop = true; //Set loop to true
 
             Console.WriteLine("Welcome to the Movie List Application!\n");
-            Console.WriteLine("There are 100 moview in this list.");
 
             while (loop) //Loop application while loop is true
             {
-                Console.Write("What category are you interested in? (Animated, Drama, Horror, or Scifi): "); //Prompts user to enter a category
-                string CategoryInput = ValidateConsoleInput.GetValidString(Options); //Gets input from user and validates that the input is one of the categories in the options array
+                Console.WriteLine("There are 100 movies in this list.");
+                Console.WriteLine("What category are you interested in?");
+
+                for (int i = 0; i < Options.Length; i++)
+                {
+                    Console.WriteLine($"{i + 1}.) {Options[i]}");
+                }
+
+                int CategoryInput = ValidateConsoleInput.GetIntegerInRange(1, 4); //Gets input from user and validates that the input is one of the categories in the options array
 
                 foreach (Movie item in MovieList) //For each movie in the movie list
                 {
-                    if (item.MovieCategory == CategoryInput) //If the movie category equals the category input
+                    if (item.MovieCategory == Options[CategoryInput - 1].ToLower()) //If the movie category equals the category input
                     {
                         Console.WriteLine(item.MovieTitle); //Write the movie title
                     }
